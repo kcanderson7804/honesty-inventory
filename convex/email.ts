@@ -303,50 +303,35 @@ function buildEmailHtml(
             </td>
           </tr>
 
-          <!-- Reflection -->
+          <!-- Action intro -->
           <tr>
-            <td style="padding: 28px 48px 0;">
-              <p style="margin: 0 0 6px 0; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: ${inkFaint};">
-                A reflection
+            <td style="padding: 32px 48px 0;">
+              <p style="margin: 0 0 16px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; font-weight: 700; color: ${ink}; line-height: 1.4;">
+                Here&rsquo;s the action I want you to take next.
               </p>
-              <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: 400; color: ${ink}; line-height: 1.7;">
-                ${tier.reflection}
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Look back through the statements.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Notice the ones that catch your eye.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Maybe it&rsquo;s the way you scored something.
+              </p>
+              <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Maybe it&rsquo;s a statement that hit you in your gut.
               </p>
             </td>
           </tr>
 
-          <!-- Freewriting prompt -->
-          <tr>
-            <td style="padding: 24px 48px 0;">
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background: #f0e8e0; border-left: 3px solid ${burgundy};">
-                <tr>
-                  <td style="padding: 20px 24px;">
-                    <p style="margin: 0 0 8px 0; font-family: 'Lato', Arial, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: ${burgundy};">
-                      Freewriting Prompt
-                    </p>
-                    <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; font-style: italic; color: ${ink}; line-height: 1.65;">
-                      &ldquo;${tier.freewritingPrompt}&rdquo;
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <!-- CTA -->
+          <!-- Your answers (embedded in copy) -->
           <tr>
             <td style="padding: 28px 48px 0;">
-              <p style="margin: 0 0 20px 0; font-family: 'Lato', Arial, sans-serif; font-size: 14px; font-weight: 300; color: ${inkSoft}; line-height: 1.65;">
-                ${tier.cta}
+              <p style="margin: 0 0 20px 0; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: ${inkFaint};">
+                Your Answers
               </p>
-              <table cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="background-color: ${burgundy};">
-                    <a href="${tier.ctaUrl}" style="display: inline-block; padding: 14px 32px; font-family: 'Lato', Arial, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #ffffff; text-decoration: none;">
-                      ${tier.ctaText} &rarr;
-                    </a>
-                  </td>
-                </tr>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                ${answersHtml}
               </table>
             </td>
           </tr>
@@ -360,26 +345,86 @@ function buildEmailHtml(
             </td>
           </tr>
 
-          <!-- Your answers -->
+          <!-- Exercise intro -->
+          <tr>
+            <td style="padding: 32px 48px 0;">
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Now I&rsquo;m going to ask you to try something new.
+              </p>
+              <p style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                You&rsquo;re going to need about 10 minutes for this exercise.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Grab a piece of paper and a pen &mdash; nothing fancy.
+              </p>
+              <p style="margin: 0 0 20px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Next, hit play on the video below. It&rsquo;s just under 5 minutes.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Video thumbnail -->
+          <tr>
+            <td style="padding: 0 48px 0; text-align: center;">
+              <a href="https://youtu.be/88tCQFYVcMk" style="display: block; text-decoration: none;">
+                <img src="https://img.youtube.com/vi/88tCQFYVcMk/hqdefault.jpg"
+                     width="504"
+                     alt="Watch the video"
+                     style="width: 100%; max-width: 504px; height: auto; display: block; border: none; border-radius: 2px;" />
+                <p style="margin: 10px 0 0 0; font-family: 'Lato', Arial, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: ${burgundy};">
+                  &#9654;&nbsp; Watch Now
+                </p>
+              </a>
+            </td>
+          </tr>
+
+          <!-- After video copy + sign-off -->
           <tr>
             <td style="padding: 28px 48px 0;">
-              <p style="margin: 0 0 24px 0; font-family: 'Lato', Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: ${inkFaint};">
-                Your Answers
+              <p style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 13px; font-style: italic; font-weight: 400; color: ${inkFaint}; line-height: 1.6;">
+                This poem is from <em>A Hundred Falling Veils</em>, and is used with permission of the author.
               </p>
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                ${answersHtml}
-              </table>
+              <p style="margin: 0 0 16px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 700; color: ${ink}; line-height: 1.5;">
+                If you got this far &ndash; you are a rockstar.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                First, you were honest on the assessment.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Then, you decided you wanted the next steps.
+              </p>
+              <p style="margin: 0 0 28px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                And just now, you finally and maybe for the first time, put your honesty on paper.
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                If you feel exhausted right now &mdash; that&rsquo;s normal.
+              </p>
+              <p style="margin: 0 0 28px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                You&rsquo;ve been holding a lot in.
+              </p>
+              <p style="margin: 0 0 28px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Be kind to yourself in the coming days (well, always, but especially now that you&rsquo;ve cracked this door open).
+              </p>
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                I&rsquo;ll be in your inbox in a few days to check in.
+              </p>
+              <p style="margin: 0 0 28px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Until then, hit reply and tell me your biggest &ldquo;aha!&rdquo; moment from the quiz or your writing. I read every response and I truly want to know.
+              </p>
+              <p style="margin: 0 0 4px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                In Truth,
+              </p>
+              <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 700; color: ${ink}; line-height: 1.7;">
+                Kim
+              </p>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
             <td style="padding: 32px 48px 36px; border-top: 1px solid ${border}; margin-top: 32px;">
-              <p style="margin: 0 0 4px 0; font-family: 'Lato', Arial, sans-serif; font-size: 12px; font-weight: 300; color: ${inkFaint}; line-height: 1.6;">
-                You're receiving this because you completed The Honesty Inventory at <a href="https://thehonestyrevolution.com" style="color: ${inkFaint};">thehonestyrevolution.com</a>.
-              </p>
-              <p style="margin: 0; font-family: 'Lato', Arial, sans-serif; font-size: 12px; font-weight: 300; color: ${inkFaint};">
-                &mdash; Kim
+              <p style="margin: 0; font-family: 'Lato', Arial, sans-serif; font-size: 12px; font-weight: 300; color: ${inkFaint}; line-height: 1.6;">
+                The Honesty Revolution is where women do the real work of living honestly. <a href="https://thehonestyrevolution.com" style="color: ${burgundy}; text-decoration: underline;">Learn more here.</a>
               </p>
             </td>
           </tr>
