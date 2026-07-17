@@ -35,7 +35,7 @@ function requireEnvValue(
 export function getViktorSpaceAccessMode(
   env: ViktorSpacesEnv = getDefaultViktorSpacesEnv(),
 ): ViktorSpaceAccessMode {
-  const configured = requireEnvValue(env, "VITE_VIKTOR_SPACES_ACCESS_MODE");
+  const configured = env["VITE_VIKTOR_SPACES_ACCESS_MODE"] || "public";
   if (!VALID_ACCESS_MODES.has(configured)) {
     throw new Error(`Invalid VITE_VIKTOR_SPACES_ACCESS_MODE: ${configured}`);
   }
