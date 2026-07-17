@@ -47,7 +47,7 @@ export const createContact = action({
         // Contact exists — merge in the new tier tag + quiz lists and PUT
         const existingTags = existing.tags ?? [];
         const existingLists = existing.subscriberLists ?? [];
-        const newTags = [tier, "Quiz Lead"].filter(t => !existingTags.includes(t));
+        const newTags = [tier, "Honesty Quiz Lead"].filter(t => !existingTags.includes(t));
         const newLists = [HONESTY_INVENTORY_LIST_ID, TIER_LIST_IDS[tier]].filter(
           (id): id is number => Boolean(id) && !existingLists.includes(id)
         );
@@ -87,7 +87,7 @@ export const createContact = action({
       body: JSON.stringify({
         name,
         email,
-        tags: [tier, "Quiz Lead"],
+        tags: [tier, "Honesty Quiz Lead"],
         subscriberLists: [HONESTY_INVENTORY_LIST_ID, TIER_LIST_IDS[tier]].filter(Boolean),
         subscribed: true,
         note: `Honesty Inventory Score: ${totalScore} | Tier: ${tier}`,
