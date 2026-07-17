@@ -23,6 +23,7 @@ export default function EmailGate({
   const [error, setError] = useState("");
   const tier = getTier(totalScore);
   const createShineContact = useAction(api.shinepages.createContact);
+  const sendResultsEmail = useAction(api.email.sendResultsEmail);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -68,6 +69,15 @@ export default function EmailGate({
           tier: tier.tag,
           tier_range: tier.range,
           section_scores: sectionScores,
+          answers,
+        }),
+
+        // 3. Resend — send transactional results email
+        sendResultsEmail({
+          firstName: name,
+          email: emailTrimmed,
+          totalScore,
+          tier: tier.tag,
           answers,
         }),
       ]);

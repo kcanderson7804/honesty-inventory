@@ -11,6 +11,7 @@
 import type * as ViktorSpacesEmail from "../ViktorSpacesEmail.js";
 import type * as auth from "../auth.js";
 import type * as constants from "../constants.js";
+import type * as email from "../email.js";
 import type * as http from "../http.js";
 import type * as seedTestUser from "../seedTestUser.js";
 import type * as shinepages from "../shinepages.js";
@@ -30,6 +31,7 @@ declare const fullApi: ApiFromModules<{
   ViktorSpacesEmail: typeof ViktorSpacesEmail;
   auth: typeof auth;
   constants: typeof constants;
+  email: typeof email;
   http: typeof http;
   seedTestUser: typeof seedTestUser;
   shinepages: typeof shinepages;
