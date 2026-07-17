@@ -49,12 +49,13 @@ export const createContact = action({
         tags?: string[]; subscriberLists?: number[];
       };
       if (existing?.id) {
-        // Contact exists — merge in the new tier tag + quiz lists and PUT
-        // Must include email + preserve all existing fields (PUT is destructive)
+        // Contact exists — add new tier tag + quiz lists and PUT
+        // ShinePages PUT: scalar fields are replaced, array fields (tags/lists) are APPENDED
+        // So: preserve scalar fields, send only the NEW tags/lists to add
         const existingTags = existing.tags ?? [];
         const existingLists = existing.subscriberLists ?? [];
-        const newTags = [tier, "Honesty Quiz Lead"].filter(t => !existingTags.includes(t));
-        const newLists = [HONESTY_INVENTORY_LIST_ID, TIER_LIST_IDS[tier]].filter(
+        const tagsToAdd = [tier, "Honesty Quiz Lead"].filter(t => !existingTags.includes(t));
+        const listsToAdd = [HONESTY_INVENTORY_LIST_ID, TIER_LIST_IDS[tier]].filter(
           (id): id is number => Boolean(id) && !existingLists.includes(id)
         );
 
@@ -66,7 +67,7 @@ export const createContact = action({
             "User-Agent": "Viktor/1.0",
           },
           body: JSON.stringify({
-            // Preserve all existing fields (PUT overwrites everything)
+            // Preserve all scalar fields (they get replaced on PUT)
             email: existing.email ?? email,
             name: existing.name ?? name,
             phone: existing.phone ?? "",
@@ -76,9 +77,9 @@ export const createContact = action({
             zip: existing.zip ?? "",
             country: existing.country ?? "",
             companyName: existing.companyName ?? "",
-            // Merge tags + lists
-            tags: [...existingTags, ...newTags],
-            subscriberLists: [...existingLists, ...newLists],
+            // Send only NEW items — ShinePages appends these to existing
+            tags: tagsToAdd,
+            subscriberLists: listsToAdd,
             subscribed: true,
             note: `Honesty Inventory Score: ${totalScore} | Tier: ${tier}`,
           }),
