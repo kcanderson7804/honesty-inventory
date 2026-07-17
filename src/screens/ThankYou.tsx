@@ -37,18 +37,7 @@ export default function ThankYou() {
             color: "var(--ink-soft)",
           }}
         >
-          Your results, your answers, and your next step are on their way. The
-          fact that you took this seriously — that matters.
-        </p>
-        <p className="font-lato text-xs" style={{ color: "var(--ink-faint)" }}>
-          Or head back to{" "}
-          <a
-            href="https://theunapologeticpen.com"
-            className="underline transition-opacity hover:opacity-60"
-            style={{ color: "var(--ink-faint)" }}
-          >
-            theunapologeticpen.com
-          </a>
+          Your results, your answers, and your next step are on their way.
         </p>
       </motion.div>
     </div>

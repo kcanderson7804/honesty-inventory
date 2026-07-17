@@ -357,8 +357,11 @@ function buildEmailHtml(
               <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
                 Grab a piece of paper and a pen &mdash; nothing fancy.
               </p>
-              <p style="margin: 0 0 20px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+              <p style="margin: 0 0 10px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
                 Next, hit play on the video below. It&rsquo;s just under 5 minutes.
+              </p>
+              <p style="margin: 0 0 20px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 15px; font-weight: 400; color: ${inkSoft}; line-height: 1.7;">
+                Come back to this email when you are done writing.
               </p>
             </td>
           </tr>

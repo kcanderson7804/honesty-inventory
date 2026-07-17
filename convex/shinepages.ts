@@ -42,11 +42,35 @@ export const createContact = action({
     );
 
     if (searchRes.ok) {
-      const existing = await searchRes.json() as { id?: number };
+      const existing = await searchRes.json() as { id?: number; tags?: string[]; subscriberLists?: number[] };
       if (existing?.id) {
-        // Contact exists — update tags via PUT (add new tag without clobbering existing ones)
-        // We'll use a separate tag update approach: just note the score in ShinePages
-        // For now, we proceed gracefully — they're already a contact
+        // Contact exists — merge in the new tier tag + quiz lists and PUT
+        const existingTags = existing.tags ?? [];
+        const existingLists = existing.subscriberLists ?? [];
+        const newTags = [tier, "Quiz Lead"].filter(t => !existingTags.includes(t));
+        const newLists = [HONESTY_INVENTORY_LIST_ID, TIER_LIST_IDS[tier]].filter(
+          (id): id is number => Boolean(id) && !existingLists.includes(id)
+        );
+
+        const updateRes = await fetch(`${SHINEPAGES_BASE_URL}/contacts/${existing.id}`, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+            "User-Agent": "Viktor/1.0",
+          },
+          body: JSON.stringify({
+            tags: [...existingTags, ...newTags],
+            subscriberLists: [...existingLists, ...newLists],
+            note: `Honesty Inventory Score: ${totalScore} | Tier: ${tier}`,
+          }),
+        });
+
+        if (!updateRes.ok) {
+          const text = await updateRes.text();
+          throw new Error(`ShinePages update error ${updateRes.status}: ${text}`);
+        }
+
         return { success: true, contactId: existing.id };
       }
     }
