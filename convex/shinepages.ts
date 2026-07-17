@@ -42,9 +42,15 @@ export const createContact = action({
     );
 
     if (searchRes.ok) {
-      const existing = await searchRes.json() as { id?: number; tags?: string[]; subscriberLists?: number[] };
+      const existing = await searchRes.json() as {
+        id?: number; name?: string; email?: string;
+        phone?: string; address?: string; city?: string; state?: string;
+        zip?: string; country?: string; companyName?: string;
+        tags?: string[]; subscriberLists?: number[];
+      };
       if (existing?.id) {
         // Contact exists — merge in the new tier tag + quiz lists and PUT
+        // Must include email + preserve all existing fields (PUT is destructive)
         const existingTags = existing.tags ?? [];
         const existingLists = existing.subscriberLists ?? [];
         const newTags = [tier, "Honesty Quiz Lead"].filter(t => !existingTags.includes(t));
@@ -60,6 +66,17 @@ export const createContact = action({
             "User-Agent": "Viktor/1.0",
           },
           body: JSON.stringify({
+            // Preserve all existing fields (PUT overwrites everything)
+            email: existing.email ?? email,
+            name: existing.name ?? name,
+            phone: existing.phone ?? "",
+            address: existing.address ?? "",
+            city: existing.city ?? "",
+            state: existing.state ?? "",
+            zip: existing.zip ?? "",
+            country: existing.country ?? "",
+            companyName: existing.companyName ?? "",
+            // Merge tags + lists
             tags: [...existingTags, ...newTags],
             subscriberLists: [...existingLists, ...newLists],
             subscribed: true,
