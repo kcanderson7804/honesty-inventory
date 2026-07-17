@@ -62,6 +62,7 @@ export const createContact = action({
           body: JSON.stringify({
             tags: [...existingTags, ...newTags],
             subscriberLists: [...existingLists, ...newLists],
+            subscribed: true,
             note: `Honesty Inventory Score: ${totalScore} | Tier: ${tier}`,
           }),
         });
@@ -88,6 +89,7 @@ export const createContact = action({
         email,
         tags: [tier, "Quiz Lead"],
         subscriberLists: [HONESTY_INVENTORY_LIST_ID, TIER_LIST_IDS[tier]].filter(Boolean),
+        subscribed: true,
         note: `Honesty Inventory Score: ${totalScore} | Tier: ${tier}`,
       }),
     });
