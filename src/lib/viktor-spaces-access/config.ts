@@ -21,16 +21,6 @@ function getDefaultViktorSpacesEnv(): ViktorSpacesEnv {
   return (runtime.process?.env ?? {}) as ViktorSpacesEnv;
 }
 
-function requireEnvValue(
-  env: ViktorSpacesEnv,
-  name: keyof ViktorSpacesEnv,
-): string {
-  const value = env[name];
-  if (!value) {
-    throw new Error(`Missing required Viktor Spaces env var: ${name}`);
-  }
-  return value;
-}
 
 export function getViktorSpaceAccessMode(
   env: ViktorSpacesEnv = getDefaultViktorSpacesEnv(),
