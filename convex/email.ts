@@ -175,17 +175,9 @@ function buildEmailHtml(
           <tr>
             <td colspan="2">
               <!-- Progress bar -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="background: ${border}; height: 4px; border-radius: 2px;">
-                    <table cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td width="${section.pct}%" style="background: ${burgundy}; height: 4px; border-radius: 2px; min-width: 4px;"></td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
+              <div style="width: 100%; height: 4px; background: ${border}; border-radius: 2px; line-height: 0; font-size: 0;">
+                <div style="width: ${section.pct}%; height: 4px; background: ${burgundy}; border-radius: 2px; min-width: ${section.pct > 0 ? "4px" : "0"};"></div>
+              </div>
             </td>
           </tr>
         </table>
@@ -263,17 +255,9 @@ function buildEmailHtml(
                       ${tier.headline}
                     </p>
                     <!-- Total score bar -->
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0;">
-                      <tr>
-                        <td style="background: ${border}; height: 6px; border-radius: 3px;">
-                          <table cellpadding="0" cellspacing="0" border="0">
-                            <tr>
-                              <td width="${scorePct}%" style="background: ${burgundy}; height: 6px; border-radius: 3px; min-width: 6px;"></td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
+                    <div style="width: 100%; height: 6px; background: ${border}; border-radius: 3px; line-height: 0; font-size: 0; margin-bottom: 0;">
+                      <div style="width: ${scorePct}%; height: 6px; background: ${burgundy}; border-radius: 3px; min-width: 6px;"></div>
+                    </div>
                   </td>
                 </tr>
               </table>
