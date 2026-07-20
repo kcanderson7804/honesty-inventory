@@ -71,11 +71,11 @@ const SECTIONS = [
 const SCORE_TIERS = [
   {
     tier: 1,
-    min: 85,
+    min: 80,
     max: 100,
     tag: "honesty-tier-1",
     headline: "You've done real work to get here.",
-    body: "There are places in your life where you're showing up honestly and that matters. But honesty is an ongoing practice, and if you're being truly honest, there are probably one or two things you're still holding onto. Life keeps evolving and so will this work. Keep going.",
+    body: "Somewhere along the way you stopped managing your life on autopilot and started paying attention to what you actually want. But honesty is an ongoing practice — there's probably still a place or two where the truth is easier to see than it is to act on. Life keeps evolving and so will this work. Keep going.",
     reflection: "You're living with more honesty than most. The question now isn't how to start — it's how to go deeper. Look at the statements where you scored lowest. Those are the places still asking for your attention.",
     freewritingPrompt: "Write about a moment in the last six months where you surprised yourself with how honest you were — and what it cost you, or didn't.",
     cta: "Ready to go deeper? The Honesty Revolution is where we do this work together.",
@@ -84,8 +84,8 @@ const SCORE_TIERS = [
   },
   {
     tier: 2,
-    min: 65,
-    max: 84,
+    min: 55,
+    max: 79,
     tag: "honesty-tier-2",
     headline: "You are headed in the right direction.",
     body: "There are parts of your life where you're living in alignment with what you actually want — and you probably know exactly which parts those are. But there are also places where you're still putting others first, still avoiding the conversations that might disappoint someone, still holding back the honest version of yourself. That's where the real work — and the real magic — lives.",
@@ -97,34 +97,21 @@ const SCORE_TIERS = [
   },
   {
     tier: 3,
-    min: 45,
-    max: 64,
+    min: 20,
+    max: 54,
     tag: "honesty-tier-3",
     headline: "You show up for everyone.",
-    body: "You stay committed, stay available — and somewhere in all of that, you got lost. Not dramatically. Just quietly, over time, one yes at a time. You probably feel a little like you don't know who you are outside of all the roles you're playing. A little like this isn't what you signed up for. You know something feels off. You've known for a while. That knowing is worth listening to.",
+    body: "You stay committed, stay available — and somewhere in all of that, you got lost. Not dramatically. Just quietly, over time, one yes at a time. You give everything to everyone and there is not much left for you at the end of the day, and it has left you exhausted. Mentally. Emotionally. Physically. You probably feel a little like you don't know who you are outside of all the roles you're playing. A little like this isn't what you signed up for. You know something feels off. You've known for a while. That knowing is worth listening to.",
     reflection: "You've been saying yes so long, you may have forgotten what your own yes even feels like. The work starts with noticing. Look at the statements where you scored lowest — those are the places that need the most honesty.",
     freewritingPrompt: "Write about a time you said yes when every part of you wanted to say no. What did it cost you? What did you tell yourself afterward?",
     cta: "This is exactly where The Honesty Revolution starts. You don't have to figure this out alone.",
     ctaText: "Learn More",
     ctaUrl: "https://thehonestyrevolution.com",
   },
-  {
-    tier: 4,
-    min: 20,
-    max: 44,
-    tag: "honesty-tier-4",
-    headline: "You have been surviving so long it just feels like life.",
-    body: "You give everything to everyone and there is not much left for you at the end of the day. You try to do it all and it has left you exhausted. Mentally. Emotionally. Physically. Somewhere along the way you stopped asking whether it could feel different. You may not even remember who you are outside of what you do for everyone else. That's not a failure. That's just how long you've been at this. And the fact that you're here means some part of you isn't ready to give up hope.",
-    reflection: "You didn't get here overnight. And the way out isn't overnight either. But you took this quiz — which means some part of you is still reaching. That part is right. Look at the statements where you scored lowest. That's where the work begins.",
-    freewritingPrompt: "Write about who you were before all of this. Before the roles, the obligations, the years of everyone else coming first. What did she want?",
-    cta: "The Honesty Revolution was built for this exact moment — for when you're exhausted and don't know where to start. Start here.",
-    ctaText: "Start Here",
-    ctaUrl: "https://thehonestyrevolution.com",
-  },
 ];
 
 function getTierData(tag: string) {
-  return SCORE_TIERS.find(t => t.tag === tag) ?? SCORE_TIERS[3];
+  return SCORE_TIERS.find(t => t.tag === tag) ?? SCORE_TIERS[2];
 }
 
 // ── Email HTML builder ────────────────────────────────────────────────────────
@@ -449,7 +436,6 @@ function getSubjectLine(tierTag: string, firstName: string): string {
     "honesty-tier-1": `${firstName}, your Honesty Inventory results are here`,
     "honesty-tier-2": `${firstName}, your Honesty Inventory results are here`,
     "honesty-tier-3": `${firstName}, your Honesty Inventory results are here`,
-    "honesty-tier-4": `${firstName}, your Honesty Inventory results are here`,
   };
   return subjects[tierTag] ?? `${firstName}, your Honesty Inventory results are here`;
 }

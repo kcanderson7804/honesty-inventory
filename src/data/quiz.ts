@@ -162,45 +162,36 @@ export const SCALE_LABELS: Record<number, string> = {
 export const SCORE_TIERS: ScoreTier[] = [
   {
     tier: 1,
-    range: "85–100",
-    min: 85,
+    range: "80–100",
+    min: 80,
     max: 100,
     tag: "honesty-tier-1",
     headline: "You've done real work to get here.",
-    body: "There are places in your life where you're showing up honestly and that matters. But honesty is an ongoing practice, and if you're being truly honest, there are probably one or two things you're still holding onto. Life keeps evolving and so will this work. Keep going.",
+    body: "Somewhere along the way you stopped managing your life on autopilot and started paying attention to what you actually want. But honesty is an ongoing practice — there's probably still a place or two where the truth is easier to see than it is to act on. Life keeps evolving and so will this work. Keep going.",
   },
   {
     tier: 2,
-    range: "65–84",
-    min: 65,
-    max: 84,
+    range: "55–79",
+    min: 55,
+    max: 79,
     tag: "honesty-tier-2",
     headline: "You are headed in the right direction.",
     body: "There are parts of your life where you're living in alignment with what you actually want — and you probably know exactly which parts those are. But there are also places where you're still putting others first, still avoiding the conversations that might disappoint someone, still holding back the honest version of yourself. That's where the real work — and the real magic — lives.",
   },
   {
     tier: 3,
-    range: "45–64",
-    min: 45,
-    max: 64,
+    range: "20–54",
+    min: 20,
+    max: 54,
     tag: "honesty-tier-3",
     headline: "You show up for everyone.",
-    body: "You stay committed, stay available — and somewhere in all of that, you got lost. Not dramatically. Just quietly, over time, one yes at a time. You probably feel a little like you don't know who you are outside of all the roles you're playing. A little like this isn't what you signed up for. You know something feels off. You've known for a while. That knowing is worth listening to.",
-  },
-  {
-    tier: 4,
-    range: "20–44",
-    min: 20,
-    max: 44,
-    tag: "honesty-tier-4",
-    headline: "You have been surviving for so long it just feels like life.",
-    body: "You give everything to everyone and there is not much left for you at the end of the day. You try to do it all and it has left you exhausted. Mentally. Emotionally. Physically. Somewhere along the way you stopped asking whether it could feel different. You may not even remember who you are outside of what you do for everyone else. That's not a failure. That's just how long you've been at this. And the fact that you're here means some part of you isn't ready to give up hope.",
+    body: "You stay committed, stay available — and somewhere in all of that, you got lost. Not dramatically. Just quietly, over time, one yes at a time. You give everything to everyone and there is not much left for you at the end of the day, and it has left you exhausted. Mentally. Emotionally. Physically. You probably feel a little like you don't know who you are outside of all the roles you're playing. A little like this isn't what you signed up for. You know something feels off. You've known for a while. That knowing is worth listening to.",
   },
 ];
 
 export function getTier(score: number): ScoreTier {
   return (
-    SCORE_TIERS.find(t => score >= t.min && score <= t.max) ?? SCORE_TIERS[3]
+    SCORE_TIERS.find(t => score >= t.min && score <= t.max) ?? SCORE_TIERS[2]
   );
 }
 

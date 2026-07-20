@@ -15,7 +15,6 @@ const TIER_LIST_IDS: Record<string, number> = {
   "honesty-tier-1": 99124234,
   "honesty-tier-2": 99124321,
   "honesty-tier-3": 99124412,
-  "honesty-tier-4": 99124500,
 };
 
 export const createContact = action({
